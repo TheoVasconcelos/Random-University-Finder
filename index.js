@@ -1,15 +1,17 @@
 import express from 'express';
 import axios from 'axios';
 import bodyparser from 'body-parser';
+import dotenv from 'dotenv';
 
 const app = express();
 const port = 3000;
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+dotenv.config();
 
-const apiKey = "AIzaSyAjrvHVuj2Bm5hkl6qRleN9F1vxT3sKDoU"
-const searchEngineId = "22397f8ba8627473a"
+const apiKey = process.env.GOOGLE_API_KEY
+const searchEngineId = process.env.GOOGLE_SEARCH_ENGINE_ID
 
 
 app.get('/', (req, res) => {
