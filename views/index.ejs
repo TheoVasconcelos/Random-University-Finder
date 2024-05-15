@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container-search">
+        <h1>Search a random University</h1>
+        <form class="search-bar" action="/search" method="post">
+            <input type="text" id="city-input" name="city" placeholder="Enter county name" value="<%= locals.value %>">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container-result">
+        <% if(locals.university){ %>
+            <h3>University name : <%= locals.university %>
+            </h3>
+            <% } else { %>
+                <h3>No university found, Try again</h3>
+                <% } %>
+                    <% if(locals.domain){ %>
+                        <a href="https://<%= locals.domain %>" class="btn btn-primary" role="button"
+                            target="_blank">University
+                            Website</a></p>
+                        <% } %>
+    </div>
+    <article>
+        <div class="info-container left">
+            <% if(locals.data){ %>
+                <% for (let i=0; i < 8; i++ ){ %>
+                    <div>
+                        <h3>
+                            <%= locals.data[i].title %>
+                        </h3>
+                        <a href="<%= locals.data[i].link %>">
+                            <%= locals.data[i].snippet %>
+                        </a>
+                    </div>
+                    <% } } else {%>
+                        <h2>No Content Available at the moment</h2>
+
+                        <% } %>
+        </div>
+        <div class="info-container">
+            <% if(locals.data){ %>
+                <% for (let i=0; i < 4; i++ ){ %>
+                    <div class="right">
+                        <img src="<%= locals.data[i].image.thumbnailLink %>" alt="">
+                        <p>
+                            <%= locals.data[i].title %>
+                        </p>
+                    </div>
+                    <% } } else {%>
+                        <h2>No Content Available at the moment</h2>
+                        <% } %>
+        </div>
+    </article>
+</body>
+
+</html>s
